@@ -4,11 +4,11 @@ push: push-cpuminer
 
 TAG = v1
 
-spark:
+cpuminer:
 	docker build -t afritzler/cpuminer-arm .
 	docker tag afritzler/cpuminer-arm afritzler/cpuminer-arm:$(TAG)
 
-push-spark: cpuminer
+push-cpuminer: cpuminer
 	docker push afritzler/cpuminer-arm
 	docker push afritzler/cpuminer-arm:$(TAG)
 
