@@ -12,7 +12,7 @@ RUN apt-get install -y autoconf \
     gcc \
     gawk \
     git \
-    apt-utils \
+    make \
  && rm -rf /var/lib/apt/lists/*
 
 # clone and build
