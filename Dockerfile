@@ -3,7 +3,7 @@ FROM arm32v7/ubuntu:17.04
 # update raspbian
 RUN apt-get update -y
 # install build dependencies
-RUN apt-get install -t autoconf \
+RUN apt-get install -y autoconf \
     libcurl4-openssl-dev \
     libjansson-dev \
     openssl \
