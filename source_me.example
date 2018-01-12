@@ -1,0 +1,5 @@
+export ALGO=cryptonight
+export URl=
+export EMAIL=youremail@address.com
+export PASSWORD=x
+export THREADS= 4
