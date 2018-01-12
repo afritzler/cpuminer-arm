@@ -1,5 +1,5 @@
 export ALGO=cryptonight
-export URl=stratum+tcp://bcn.pool.minergate.com:45550
+export URL=stratum+tcp://bcn.pool.minergate.com:45550
 export EMAIL=youremail@address.com
 export PASSWORD=x
 export THREADS=4
