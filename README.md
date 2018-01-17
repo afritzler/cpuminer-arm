@@ -7,17 +7,23 @@ CPU Miner (minerd) for Raspberry Pi and other ARM based boards
 * Miningpool (e.g. Minergate)
 
 # Run
-To start mining run (replace your email address)
+Configure your mining environment
 ```
-# mining Monero Dollar
-docker run -it afritzler/cpuminer-arm:v1 
-/minerd -a cryptonight -o stratum+tcp://xmr.pool.minergate.com:45560 -u youremail@address.com -p x -t 4
-
-# mining ByteCoin
-docker run -it afritzler/cpuminer-arm:v1 
-/minerd -a cryptonight -o stratum+tcp://bcn.pool.minergate.com:45550 -u youremail@address.com -p x -t 4
+cp source_me.example source_me
 ```
-You can change the thread count via the `-t` flag (default=4). Make sure your device doesn't overheat!
+Adjust the `source_me` file 
+```
+export ALGO=cryptonight
+export URL=stratum+tcp://bcn.pool.minergate.com:45550
+export EMAIL=youremail@address.com
+export PASSWORD=x
+export THREADS=4
+```
+Start mining
+```
+source source_me && ./bin/mine.sh
+```
+You can change the thread count by adjusting the `THREADS=4` variable. Make sure your device doesn't overheat!
 ```
 watch vcgencmd measure_temp
 ```
