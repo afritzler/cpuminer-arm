@@ -1,3 +1,3 @@
 #!/bin/bash
 
-minerd -a $ALGO -o $URl -u $EMAIL -p x -t $THREADS
+minerd -a $ALGO --url=$URL --user=$EMAIL -p x -t $THREADS
