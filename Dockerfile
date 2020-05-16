@@ -1,4 +1,4 @@
-FROM arm32v7/ubuntu:17.04
+FROM arm32v7/debian:buster-slim
 
 # update raspbian
 RUN apt-get update -y
