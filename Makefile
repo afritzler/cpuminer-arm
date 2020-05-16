@@ -2,7 +2,7 @@ all: cpuminer
 push: push-cpuminer
 .PHONY: push push-cpuminer cpuminer
 
-TAG = v1
+TAG = v2
 
 cpuminer:
 	docker build -t afritzler/cpuminer-arm .

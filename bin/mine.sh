@@ -1,6 +1,12 @@
 #!/bin/bash
 
 echo "Starting up ..."
-echo "docker run -it afritzler/cpuminer-arm:v1 /minerd -a $ALGO -o $URL -u $EMAIL -p x -t $THREADS"
+echo "minerd -a $ALGO -o $URL -u $EMAIL -p x -t $THREADS"
 
-docker run -it afritzler/cpuminer-arm:v1 /minerd -a $ALGO -o $URL -u $EMAIL -p x -t $THREADS
+docker run -d \
+--name minerd \
+-e URL="$URL" \
+-e EMAIL="$EMAIL" \
+-e PASSWORD="$PASSWORD" \
+-e THREADS="$THREADS" \
+afritzler/cpuminer-arm:latest

@@ -1,4 +1,4 @@
-FROM arm32v7/debian:buster-slim
+FROM ubuntu:20.04
 
 # update raspbian
 RUN apt-get update -y
@@ -20,10 +20,7 @@ RUN git clone https://github.com/lucasjones/cpuminer-multi.git
 RUN cd cpuminer-multi && ./autogen.sh && ./configure && make
 
 # copy binary
-RUN cp cpuminer-multi/minerd /minerd
-
-# cleanup
-RUN rm -rf cpuminer-multi
+RUN cp cpuminer-multi/minerd /usr/bin/minerd
 
 # start minerd
-CMD /minerd -a $ALGO -o $URl -u $EMAIL -p x -t $THREADS
+CMD minerd -a $ALGO -o $URl -u $EMAIL -p x -t $THREADS
