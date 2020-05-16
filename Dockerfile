@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:rolling
 
 # update raspbian
 RUN apt-get update -y
@@ -19,8 +19,9 @@ RUN apt-get install -y autoconf \
 RUN git clone https://github.com/lucasjones/cpuminer-multi.git
 RUN cd cpuminer-multi && ./autogen.sh && ./configure && make
 
-# copy binary
+# copy binary and startup script
 RUN cp cpuminer-multi/minerd /usr/bin/minerd
+COPY /scripts/minerd.sh /usr/local/bin/minerd.sh
 
 # start minerd
-CMD minerd -a $ALGO -o $URl -u $EMAIL -p x -t $THREADS
+CMD ["minerd.sh"]
