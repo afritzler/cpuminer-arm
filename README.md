@@ -14,7 +14,7 @@ To run the cpuminer container
 docker run -d \
 --name minerd \
 -e ALGO="cryptonight"
--e URL="stratum+tcp://bcn.pool.minergate.com:45550" \
+-e URL="stratum+tcp://xmr.pool.minergate.com:45700" \
 -e EMAIL="youremail@mail.com" \
 -e PASSWORD="x" \
 -e THREADS="1" \

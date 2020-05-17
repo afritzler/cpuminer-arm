@@ -16,12 +16,20 @@ RUN apt-get install -y autoconf \
  && rm -rf /var/lib/apt/lists/*
 
 # clone and build
+WORKDIR /
 RUN git clone https://github.com/lucasjones/cpuminer-multi.git
 RUN cd cpuminer-multi && ./autogen.sh && ./configure && make
 
-# copy binary and startup script
-RUN cp cpuminer-multi/minerd /usr/bin/minerd
-COPY /scripts/minerd.sh /usr/local/bin/minerd.sh
+FROM ubuntu:rolling
+RUN apt-get update -y
+RUN apt-get install -y \
+    libcurl4 \
+    libjansson4 \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/local/bin
+COPY --from=0 /cpuminer-multi/minerd .
+COPY /scripts/minerd.sh .
 
 # start minerd
 CMD ["minerd.sh"]
