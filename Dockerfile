@@ -14,8 +14,9 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends autoconf \
  && rm -rf /var/lib/apt/lists/*
 
 # clone and build
+WORKDIR /
+RUN git clone https://github.com/lucasjones/cpuminer-multi.git
 WORKDIR /cpuminer-multi
-RUN git clone https://github.com/lucasjones/cpuminer-multi.git .
 RUN ./autogen.sh && ./configure && make
 
 FROM ubuntu:18.04
