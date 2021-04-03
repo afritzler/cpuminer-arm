@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 AS builder
+FROM ubuntu:rolling AS builder
 
 # update raspbian
 RUN apt-get update -y && apt-get install -y --no-install-recommends autoconf \
@@ -11,6 +11,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends autoconf \
     gawk \
     git \
     make \
+    ca-certificates \
  && rm -rf /var/lib/apt/lists/*
 
 # clone and build
@@ -19,7 +20,7 @@ RUN git clone https://github.com/lucasjones/cpuminer-multi.git
 WORKDIR /cpuminer-multi
 RUN ./autogen.sh && ./configure && make
 
-FROM ubuntu:18.04
+FROM ubuntu:rolling
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libcurl4 \
     libjansson4 \
