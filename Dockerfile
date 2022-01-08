@@ -1,5 +1,9 @@
 FROM ubuntu:20.04 AS builder
 
+
+ENV TZ=Asia/Dubai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # update raspbian
 RUN apt-get update -y && apt-get install -y --no-install-recommends autoconf \
     autogen \
