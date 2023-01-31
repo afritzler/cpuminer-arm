@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS builder
+FROM ubuntu:23.04 AS builder
 
 # update raspbian
 RUN apt-get update -y && apt-get install -y --no-install-recommends autoconf \
@@ -19,7 +19,7 @@ RUN git clone https://github.com/lucasjones/cpuminer-multi.git
 WORKDIR /cpuminer-multi
 RUN ./autogen.sh && ./configure && make
 
-FROM ubuntu:20.04
+FROM ubuntu:23.04
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libcurl4 \
     libjansson4 \
